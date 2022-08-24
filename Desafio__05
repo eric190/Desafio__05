@@ -1,0 +1,70 @@
+
+using Desafio__05;
+
+class Program : Aluno
+{
+    private static IEnumerable<string> listaAluno;
+
+    static void Main(string[] args)
+    {
+        //Lista
+       // IEnumerable<string> alunos = listaAluno.Select(aluno => (string)aluno);
+        List<string> listaAluno = new List<string>();
+
+        Aluno aluno = new Aluno();
+        aluno.Nome = "José";
+        aluno.Nota = 8;
+
+
+        Aluno aluno2 = new Aluno();
+        aluno2.Nome = "José";
+        aluno2.Nota = 7;
+
+        listaAluno.Add(aluno);
+
+        foreach (string aluno1 in listaAluno)
+        {
+            Console.WriteLine("A soma da nota dos alunos é: " + (aluno.Nota + aluno2.Nota));
+        }
+
+        foreach (string item in listaAluno)
+        {
+            Console.WriteLine(aluno);
+            Console.WriteLine(aluno2);
+        }
+      
+        Console.ReadLine();
+        File.WriteAllLines(@"C:/arquivo.csv", (IEnumerable<string>)aluno);
+
+    }
+
+}
+
+
+
+
+
+
+using System;
+
+namespace Desafio__05
+{
+    public class Aluno
+    {
+        public static implicit operator string(Aluno aluno) => $"{aluno.Nome},{aluno.Nota}";
+        public string Nome { get; set; }
+
+        public double Nota { get; set; }
+
+        public Aluno(string nome, double nota)
+        {
+            Nome = nome;
+
+            Nota = nota;
+        }
+
+        public Aluno() { }
+
+    }
+}
+
